@@ -37,7 +37,8 @@ func (r *controlPlaneInstanceReconciler) patchHtpasswdSecret(ctx context.Context
 			log.Error(err1, "failed to encrypt the raw password")
 			return err1
 		}
-		auth = "internal:$2a$" + base64.StdEncoding.EncodeToString(hashedPassword)
+		username := "internal"
+		auth = fmt.Sprintf("%s:%s", username, string(hashedPassword))
 	}
 
 	b64Password := base64.StdEncoding.EncodeToString([]byte(rawPassword))
