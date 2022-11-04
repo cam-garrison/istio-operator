@@ -255,6 +255,8 @@ spec:
         secret:
           defaultMode: 420
           secretName: htpasswd
+          items:
+            - key: auth
       - name: secret-prometheus-proxy
         secret:
           defaultMode: 420
