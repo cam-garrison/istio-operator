@@ -197,8 +197,6 @@ spec:
         secret:
           defaultMode: 420
           secretName: htpasswd
-          items:
-            - key: auth
       - name: secret-grafana-proxy
         secret:
           defaultMode: 420
