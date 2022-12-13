@@ -49,9 +49,13 @@ webhooks:
         - disabled
       - key: istio-env
         operator: DoesNotExist
-{{- if .Values.sidecarInjectorWebhook.objectSelector.enabled }}
   objectSelector:
     matchExpressions:
+    - key: app
+      operator: NotIn
+      values:
+      - "istiod"
+{{- if .Values.sidecarInjectorWebhook.objectSelector.enabled }}
 {{- if eq .Values.global.proxy.autoInject "enabled" }}
     - key: "sidecar.istio.io/inject"
       operator: NotIn
